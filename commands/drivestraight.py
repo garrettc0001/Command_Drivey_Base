@@ -2,6 +2,9 @@ import commands2
 from wpimath.controller import PIDController
 from constants import movement_K_p, movement_K_I, movement_K_D
 from subsytems.drivetrain import Drivetrain
+import math
+
+ACCEPTABLE_ERROR = 10
 
 class DriveStraight(commands2.PIDCommand):
     # /**
@@ -20,4 +23,4 @@ class DriveStraight(commands2.PIDCommand):
             [drivetrain])
 
     def isFinished(self):
-        return self.getController().atSetpoint()
+        return math.fabs(self.getController().getPositionError() < ACCEPTABLE_ERROR)

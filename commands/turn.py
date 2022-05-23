@@ -2,7 +2,9 @@ import commands2
 from wpimath.controller import PIDController
 from constants import turn_K_p, turn_K_I, turn_K_D
 from subsytems.drivetrain import Drivetrain
+import math
 
+ACCEPTABLE_ERROR = 10
 
 class Turn(commands2.PIDCommand):
     # /**
@@ -21,4 +23,4 @@ class Turn(commands2.PIDCommand):
             [drivetrain])
 
     def isFinished(self):
-        return self.getController().atSetpoint()
+        return math.fabs(self.getController().getPositionError()) < ACCEPTABLE_ERROR
