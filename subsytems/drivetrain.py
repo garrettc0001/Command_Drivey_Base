@@ -39,14 +39,13 @@ class Drivetrain(commands2.SubsystemBase):
 
     def arcadeDrive(self, fwd, rot):
         """Drive the robot with standard arcade controls."""
-        self.drive.arcadeDrive(fwd, rot)
-        # self.set(fwd-rot, fwd+rot)
+        self.drive.arcadeDrive(rot, fwd)
 
     def periodic(self):
         pass
 
-    def driveStraight(self, fwd):
-        self.arcadeDrive(fwd, 0)
+    def driveStraight(self, motion):
+        self.arcadeDrive(motion, 0)
 
     def turn(self, motion):
         self.set(motion, - motion)

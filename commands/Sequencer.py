@@ -12,8 +12,8 @@ class Sequencer(commands2.SequentialCommandGroup):
         self.drivetrain = drivetrain
         super().__init__()
         self.addCommands(
-            drivetrain.driveStraight(5 * 12 / (4 * math.pi) * 360),
-            drivetrain.turn(180),
-            drivetrain.driveStraight(5 * 12 / (4 * math.pi) * 360),
-            drivetrain.turn(180)
+            DriveStraight(5, self.drivetrain),
+            Turn(180, self.drivetrain),
+            DriveStraight(5, self.drivetrain),
+            Turn(180, self.drivetrain)
         )
