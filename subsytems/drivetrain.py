@@ -45,7 +45,7 @@ class Drivetrain(commands2.SubsystemBase):
         pass
 
     def driveStraight(self, motion):
-        self.arcadeDrive(motion, 0)
+        self.set(motion, motion)
 
     def turn(self, motion):
-        self.set(motion, - motion)
+        self.set(- motion, motion)
